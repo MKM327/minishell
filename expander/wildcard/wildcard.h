@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wildcard.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmesum <mmesum@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eablak <eablak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 19:22:36 by eablak            #+#    #+#             */
-/*   Updated: 2023/03/14 12:58:59 by mmesum           ###   ########.fr       */
+/*   Updated: 2023/03/14 15:46:52 by eablak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ int		files_count(char **files);
 char	**get_w_dot_files2(char *path, unsigned char d_type);
 
 int		get_w_path_count2(char *path, unsigned char d_type);
+void	free_files(char **files);
 
 #endif

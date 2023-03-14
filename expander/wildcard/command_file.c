@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmesum <mmesum@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eablak <eablak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 19:22:00 by eablak            #+#    #+#             */
-/*   Updated: 2023/03/14 12:59:27 by mmesum           ###   ########.fr       */
+/*   Updated: 2023/03/14 16:46:45 by eablak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ char	*find_data(char *suffix)
 	if (suffix[i] == '/')
 		data[i++] = '/';
 	data[i] = '\0';
+	free(suffix);
 	return (data);
 }
 
@@ -54,6 +55,7 @@ char	*edit_data(char *data)
 		i++;
 	}
 	new_data[i] = '\0';
+	free(data);
 	return (new_data);
 }
 
@@ -73,7 +75,6 @@ char	*add_slash(char *path)
 	}
 	new_path[i] = '/';
 	new_path[++i] = '\0';
-	//free(path);
 	return (new_path);
 }
 
@@ -106,6 +107,7 @@ char	*new_path(char *path, char *prefix)
 		j++;
 	}
 	new_path[i] = '\0';
+	free(path);
 	return (new_path);
 }
 
@@ -151,6 +153,7 @@ char	*prefix_add_file(char *prefix, char *file)
 		i++;
 	}
 	new_prefix[i] = '\0';
+	free(prefix);
 	return (new_prefix);
 }
 
@@ -170,6 +173,8 @@ int	countWildcard(char *prefix, char *suffix, int *count)
 	data = find_data(suffix);
 	path = getcwd(buf, 1024);
 	path = add_slash(path);
+	if(*count != 0)
+		free(path);
 	path = new_path(path, prefix);
 	if (ft_strchr(data, '/') != NULL)
 	{

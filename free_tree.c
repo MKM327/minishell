@@ -39,6 +39,7 @@ void	free_command(t_command *command)
 	}
 	i = 0;
 	free(command->arguments);
+	free(command->command);
 }
 void	free_redirections(t_redirections *redirections)
 {
@@ -70,7 +71,7 @@ void	free_simple_command(t_node *node)
 	if (node->redirections != NULL)
 		free_redirections(node->redirections);
 }
-
+//(cat && ls) && ls
 void	free_tree(t_node *head)
 {
 	int	i;
@@ -83,9 +84,12 @@ void	free_tree(t_node *head)
 		while (i < head->connection_count)
 		{
 			free_tree(head->connections[i]);
-			free_token(head->tokens);
-			if (head->redirections != NULL)
-				free_redirections(head->redirections);
+			if (i == 0)
+			{
+				free_token(head->tokens);
+				if (head->redirections != NULL)
+					free_redirections(head->redirections);
+			}
 			free(head->connections[i]);
 			i++;
 		}

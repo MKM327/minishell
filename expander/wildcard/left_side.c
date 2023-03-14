@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   left_side.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmesum <mmesum@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eablak <eablak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 19:22:19 by eablak            #+#    #+#             */
-/*   Updated: 2023/03/14 12:33:42 by mmesum           ###   ########.fr       */
+/*   Updated: 2023/03/14 16:19:03 by eablak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ char	*left_side(char *str, int *index)
 		ret_str[j] = '\0';
 		return (ret_str);
 	}
+	free(str);
 	return (NULL);
 }
 

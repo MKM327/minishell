@@ -6,7 +6,7 @@
 /*   By: eablak <eablak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 19:22:29 by eablak            #+#    #+#             */
-/*   Updated: 2023/03/12 19:22:30 by eablak           ###   ########.fr       */
+/*   Updated: 2023/03/14 16:19:37 by eablak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ char	*right_side(char *str, int *index)
 		}
 		return (new_str);
 	}
+	free(str);
 	return (NULL);
 }
 

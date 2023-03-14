@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_node_wildcard.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmesum <mmesum@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eablak <eablak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 19:22:17 by eablak            #+#    #+#             */
-/*   Updated: 2023/03/14 13:12:01 by mmesum           ###   ########.fr       */
+/*   Updated: 2023/03/14 16:41:28 by eablak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ char	*delete_quote(char *str)
 		}
 	}
 	new_str[j] = '\0';
+	// free(str); was allocated
 	return (new_str);
 }
 
@@ -127,7 +128,6 @@ void	handle_forcommand(t_command *command)
 		if (is_asterisk(str) && asterisk_slash(str) == 0)
 		{
 			files = just_asterisk(str);
-
 			int count_files = files_count(files);
 			if (files[0] == NULL)
 				return;
@@ -174,7 +174,7 @@ void	handle_forarg(t_command *command)
 				match_files = sort_files(match_files, str);
 				match_arg_files(match_files, command, i);
 			}
-			if (asterisk_slash(str) == 1)
+			 if (asterisk_slash(str) == 1)
 			{
 				count = countWildcard(NULL, str,&count);
 				if (count >= 1)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmesum <mmesum@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eablak <eablak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 19:22:31 by eablak            #+#    #+#             */
-/*   Updated: 2023/03/14 12:30:14 by mmesum           ###   ########.fr       */
+/*   Updated: 2023/03/14 16:36:22 by eablak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	get_path_count(void)
 			i++;
 		// closedir(d);
 	}
-	free(dir);
+	free(dir); //leak
+	// free(d);
 	return (i);
 }
 
@@ -89,4 +90,15 @@ int	asterisk_slash(char *str)
 	if (ft_strchr(str, '*') != NULL && ft_strchr(str, '/') != NULL)
 		return (1);
 	return (0);
+}
+
+void	free_files(char **files)
+{
+	int i = 0;
+	while (files[i])
+	{
+		free(files[i]);
+		i++;
+	}
+	free(files);
 }
